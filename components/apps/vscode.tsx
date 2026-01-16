@@ -7,7 +7,7 @@ export default function VSCode({ isDarkMode = true }: VSCodeProps) {
   return (
     <div className="h-full w-full bg-gray-900">
       <iframe
-        src="https://github.com/Shobhitkapoor1/macos-portfolio/blob/main/README.md"
+        src="https://github.com/Shobhitkapoor1/Portfolio-/blob/main/README.md"
         className="w-full h-full border-0"
         title="VSCode Project View"
       />
