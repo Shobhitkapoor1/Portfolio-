@@ -1,291 +1,245 @@
-# 🍎 macOS Portfolio
+# macOS Portfolio OS
 
-A stunning, interactive macOS-themed web application built with Next.js, React, and TypeScript. This project recreates the look and feel of macOS, complete with working applications, animations, and system features.
+A macOS-inspired operating system built entirely in the browser to serve as an interactive developer portfolio.
 
-## Overview
-
-This is a fully functional portfolio website styled as a macOS operating system. It features authentic macOS UI components, a boot sequence, login screen, desktop environment, and multiple built-in applications. Perfect for developers and designers looking to showcase their work in a creative and memorable way.
-
-## ✨ Features
-
-### System Features
-- **Boot Sequence**: Animated startup screen that transitions to login
-- **Login Screen**: Secure authentication flow with username/password
-- **Desktop Environment**: Fully interactive macOS-style desktop
-- **Sleep Mode**: Dimmed screen state with wake capability
-- **Shutdown/Restart**: System state management with proper transitions
-- **Control Center**: Settings for brightness, dark mode, and system controls
-- **Spotlight Search**: Quick search functionality for apps and content
-
-### Built-in Applications
-- **Finder**: File browser and system navigation
-- **Safari**: Web browser simulation
-- **Mail**: Email client interface
-- **Music**: Audio player with album art
-- **Photos**: Image gallery application
-- **Notes**: Text editor and note-taking app
-- **Terminal**: Command-line interface
-- **VS Code**: Code editor integration
-- **FaceTime**: Video calling interface
-- **GitHub**: GitHub profile viewer
-- **Spotify**: Music streaming integration
-- **Weather**: Weather information display
-- **Settings**: System preferences and configuration
-- **YouTube**: Video player
-- **Snake**: Interactive game
-- **Website**: Custom website showcase
-
-### UI/UX
-- **Dark Mode**: Toggle between light and dark themes
-- **Brightness Control**: Adjustable screen brightness
-- **Dock**: Application launcher with favorites
-- **Menubar**: System menu with status indicators
-- **Window Management**: Draggable, resizable windows
-- **Liquid Glass Design**: Modern frosted glass effect components
-- **Smooth Animations**: Polished transitions throughout the interface
-
-## 🛠️ Tech Stack
-
-### Frontend
-- **Next.js 15.5+**: React framework for production
-- **React 18+**: UI library
-- **TypeScript**: Type-safe JavaScript
-- **Tailwind CSS**: Utility-first CSS framework
-- **Radix UI**: Accessible UI component library
-- **Lucide React**: Icon library
-- **Embla Carousel**: Carousel/slider component
-
-### Styling & Animation
-- **Liquid Glass React**: Frosted glass effect
-- **Use Gesture**: Gesture recognition and animations
-- **PostCSS**: CSS processing
-- **Autoprefixer**: Browser compatibility
-
-### Forms & Utilities
-- **React Hook Form**: Efficient form management
-- **Date-fns**: Date utilities
-- **Clsx/Class Variance Authority**: Dynamic class management
-- **Sonner**: Toast notifications
-
-### Deployment
-- **Docker**: Containerization
-- **Google Cloud Run**: Serverless deployment
-- **Node.js 20 Alpine**: Lightweight runtime
-
-## 📋 Prerequisites
-
-- Node.js 18+ (v20 recommended)
-- npm or pnpm package manager
-- Modern web browser (Chrome, Firefox, Safari, Edge)
-
-## 🚀 Quick Start
-
-### Installation
-
-```bash
-# Install dependencies
-npm install
-# or
-pnpm install
-```
-
-### Development
-
-```bash
-# Run development server
-npm run dev
-# or
-pnpm dev
-```
-
-The application will be available at `http://localhost:3000`
-
-### Production Build
-
-```bash
-# Build for production
-npm run build
-
-# Start production server
-npm start
-```
-
-### Linting
-
-```bash
-# Run ESLint
-npm run lint
-```
-
-## 📦 Project Structure
-
-```
-.
-├── app/                          # Next.js app directory
-│   ├── layout.tsx               # Root layout
-│   ├── page.tsx                 # Main page with system states
-│   └── globals.css              # Global styles
-├── components/
-│   ├── boot-screen.tsx          # macOS boot animation
-│   ├── login-screen.tsx         # Login interface
-│   ├── desktop.tsx              # Main desktop environment
-│   ├── dock.tsx                 # Application dock
-│   ├── menubar.tsx              # Top menu bar
-│   ├── control-center.tsx       # System settings
-│   ├── spotlight.tsx            # Search functionality
-│   ├── wallpaper.tsx            # Desktop wallpaper
-│   ├── window.tsx               # Window component
-│   ├── sleep-screen.tsx         # Sleep mode
-│   ├── shutdown-screen.tsx      # Shutdown screen
-│   ├── apps/                    # Built-in applications
-│   │   ├── finder.tsx
-│   │   ├── safari.tsx
-│   │   ├── terminal.tsx
-│   │   ├── vscode.tsx
-│   │   ├── music.tsx
-│   │   ├── notes.tsx
-│   │   └── ...
-│   └── ui/                      # Reusable UI components
-│       ├── button.tsx
-│       ├── dialog.tsx
-│       ├── card.tsx
-│       └── ... (Radix UI primitives)
-├── lib/
-│   ├── utils.ts                 # Utility functions
-│   └── liquid-glass-config.ts  # Styling configuration
-├── public/                       # Static assets
-├── styles/                       # Additional stylesheets
-├── types.ts                      # TypeScript type definitions
-├── tailwind.config.ts           # Tailwind CSS configuration
-├── tsconfig.json                # TypeScript configuration
-├── next.config.mjs              # Next.js configuration
-├── postcss.config.mjs           # PostCSS configuration
-├── Dockerfile                    # Docker configuration
-└── package.json                 # Dependencies and scripts
-```
-
-## 🎨 Customization
-
-### Changing Wallpaper
-Edit the `wallpaper.tsx` component to modify the background image or gradient.
-
-### Adding New Applications
-1. Create a new component in `components/apps/`
-2. Add the app configuration to the application registry
-3. Update the dock configuration to include the new app
-
-### Theme Customization
-- Modify `tailwind.config.ts` for color scheme changes
-- Edit `globals.css` for font and spacing adjustments
-- Adjust `liquid-glass-config.ts` for glass effect styling
-
-### Dark Mode
-The application supports system-wide dark mode toggle accessible through the Control Center.
-
-## 🐳 Docker Deployment
-
-### Build Docker Image
-```bash
-docker build -t nextjs-app .
-```
-
-### Run Docker Container
-```bash
-docker run -p 8080:3000 nextjs-app
-```
-
-## ☁️ Google Cloud Run Deployment
-
-### Prerequisites
-- Google Cloud SDK installed
-- Active Google Cloud project
-
-### Deployment Steps
-
-```bash
-# Set project ID
-export PROJECT_ID=your-project-id
-
-# Build and push image
-gcloud builds submit --tag gcr.io/$PROJECT_ID/nextjs-app
-
-# Deploy to Cloud Run
-gcloud run deploy nextjs-app \
-  --image gcr.io/$PROJECT_ID/nextjs-app \
-  --platform managed \
-  --region us-central1 \
-  --allow-unauthenticated \
-  --port 8080
-```
-
-## 🎯 Key Features Explained
-
-### System States
-The application manages several system states:
-- `booting`: Initial startup animation
-- `login`: Login screen
-- `desktop`: Main operating system interface
-- `sleeping`: Power-saving mode
-- `shutdown`: System shutdown sequence
-- `restarting`: System restart cycle
-
-### Window Management
-- Draggable windows with smooth animations
-- Resizable window boundaries
-- Z-index management for window stacking
-- Window minimize/maximize/close functionality
-
-### Local Storage
-The application persists user preferences:
-- Dark mode preference
-- Screen brightness level
-- Window positions and sizes
-- Application state
-
-## 🔧 Configuration Files
-
-### `tailwind.config.ts`
-Tailwind CSS configuration with custom colors and extensions.
-
-### `next.config.mjs`
-Next.js configuration with experimental features and optimizations enabled.
-
-### `tsconfig.json`
-TypeScript compiler options and path aliases.
-
-### `components.json`
-Shadcn/ui component configuration.
-
-## 📱 Browser Compatibility
-
-- Chrome/Edge 90+
-- Firefox 88+
-- Safari 14+
-- Mobile browsers with modern CSS support
-
-## 🚀 Performance Optimizations
-
-- **Image Optimization**: Next.js image optimization
-- **Code Splitting**: Automatic code splitting per route
-- **Parallel Builds**: Webpack build worker enabled
-- **Analytics**: Integrated Vercel Analytics
-
-## 📝 License
-
-See LICENSE file for details.
-
-## 👨‍💻 Author
-
-Created as an interactive portfolio project showcasing modern web development skills and UI/UX design.
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit issues and enhancement requests.
-
-## 📧 Contact
-
-For inquiries and feedback, please reach out through the portfolio website.
+This project is not a website.  
+It is a system.
 
 ---
 
-**Enjoy exploring the macOS-themed portfolio!** 🎉
+## Overview
+
+This portfolio recreates a full desktop operating system experience, including:
+
+- Boot screen  
+- Login screen  
+- Desktop environment  
+- Window manager  
+- Dock and menubar  
+- Spotlight search  
+- Control Center  
+- Launchpad  
+- Sleep and shutdown states  
+
+Each application inside the OS represents a different aspect of the developer’s profile, skills, and projects.
+
+Instead of scrolling a resume, users operate the portfolio.
+
+---
+
+## Vibe Coding with Gemini & Antigravity
+
+This project was built using a development approach I call **vibe coding** — designing software through system-level intuition, rapid iteration, and architectural flow rather than rigid step-by-step construction.
+
+### Gemini as a System Designer
+
+Gemini was used as a thinking partner rather than a code generator.
+
+With Gemini in Google AI Studio, I explored:
+
+- Operating system interaction patterns  
+- Window management logic models  
+- UI state orchestration strategies  
+- Component responsibility boundaries  
+- Performance and edge-case prediction  
+
+Instead of asking for finished code, I asked Gemini to reason about architecture, behavior, and trade-offs. This allowed me to design the system first and implement with clarity.
+
+Gemini helped transform ideas into structured system concepts before they became components.
+
+### Antigravity as a Development Accelerator
+
+Antigravity acted as the execution layer of vibe coding.
+
+It enabled:
+
+- Rapid scaffolding of complex component structures  
+- System-wide refactoring without breaking behavior  
+- Parallel experimentation with UI and logic  
+- Fast iteration across interconnected files  
+
+Antigravity allowed me to maintain creative momentum while preserving architectural discipline.
+
+### The Vibe Coding Loop
+
+The workflow followed a continuous loop:
+
+1. Conceptualize system behavior with Gemini  
+2. Validate architecture and edge cases  
+3. Implement and refine with Antigravity  
+4. Observe system behavior  
+5. Iterate again  
+
+This loop allowed the OS to evolve organically as a cohesive system rather than a collection of isolated components.
+
+---
+
+## Features
+
+### Window Management System
+
+- Drag windows by title bar  
+- Resize from eight directions  
+- Minimize, maximize, and close controls  
+- Active window focus handling  
+- Z-index management  
+- Restore previous size and position after maximize  
+
+### Desktop Architecture
+
+The desktop acts as the system kernel and manages:
+
+- Open windows registry  
+- Active window state  
+- Overlay visibility  
+- Theme state  
+- Screen brightness  
+- Persistent preferences  
+
+### UI Components
+
+- Wallpaper with dynamic theme switching  
+- Dock with magnification effect and running app indicators  
+- Menubar with real-time clock, battery, WiFi, and system controls  
+- Control Center with system toggles  
+- Spotlight with keyboard navigation  
+- Launchpad grid  
+
+### Applications
+
+Located in the `apps` directory:
+
+- Finder  
+- Notes (Markdown support)  
+- Terminal  
+- Safari  
+- GitHub  
+- VSCode  
+- Mail  
+- FaceTime  
+- YouTube  
+- Spotify  
+- Photos  
+- Weather (Canvas animations)  
+- Snake game  
+
+Each application demonstrates different UI, state, and interaction patterns.
+
+---
+
+## Tech Stack
+
+- Next.js  
+- React  
+- TypeScript  
+- Tailwind CSS  
+- Radix UI / shadcn UI  
+- Google Cloud Run  
+
+---
+
+## Architecture
+
+Application Root
+└── Desktop.tsx (System Controller)
+├── Wallpaper
+├── Menubar
+│ └── Control Center
+│ └── Spotlight
+├── Dock
+├── Window Manager
+│ └── App Components
+├── Launchpad
+└── System Overlays
+
+Windows are dynamically rendered using a component mapping system, allowing applications to be injected without modifying the window manager.
+
+---
+
+## State Management
+
+Desktop maintains centralized control over:
+
+- openWindows  
+- activeWindowId  
+- overlay visibility states  
+- theme mode  
+- brightness level  
+
+All child components receive controlled callbacks for predictable behavior.
+
+---
+
+## Performance Optimizations
+
+- Conditional rendering for overlays and windows  
+- useRef for drag and resize operations  
+- Debounced visual transitions  
+- Minimal re-render strategy  
+- No heavy animation libraries  
+
+---
+
+## Responsive Behavior
+
+- Desktop layout for large screens  
+- Touch-optimized window behavior for mobile  
+- Dock overflow menu on small screens  
+- Simplified interactions without breaking OS logic  
+
+---
+
+## Data Persistence
+
+Uses localStorage for:
+
+- WiFi state  
+- Theme preference  
+
+---
+
+## Development Philosophy
+
+This project follows three rules:
+
+1. No uncontrolled state  
+2. No visual shortcuts  
+3. No UI without architectural justification  
+
+The goal is system realism, not visual imitation.
+
+---
+
+## Deployment
+
+The project is deployed using Google Cloud Run.
+
+To deploy:
+
+1. Build Docker image  
+2. Push to Google Container Registry  
+3. Deploy to Cloud Run with port 8080 exposed  
+
+---
+
+## Purpose
+
+This project serves as an interactive developer portfolio that demonstrates:
+
+- System-level thinking  
+- UI architecture  
+- State management discipline  
+- Component design  
+- Performance awareness  
+
+---
+
+## License
+
+This project is for portfolio and educational purposes.
+
+---
+
+If you reached this far, you didn’t read a README.
+
+You explored a system.
